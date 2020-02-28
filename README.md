@@ -1,2 +1,2 @@
 # freeCodeCamp
-Responsive Web Design Projects and Coding Interview Prep
+Web Design Projects and Coding Interview Prep
