@@ -1,0 +1,114 @@
+<html>
+    <head>
+        <title>BF Style Guide</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <div class='main-content'>
+        <nav id="navbar">
+            <header>BF Style Guide</header>
+            <div class='git-link'>Made by <a href="https://github.com/renmans">renmans</a></div>
+            <a href="#Introduction" class="nav-link">Introduction</a>
+            <a href="#Whitespace_and_Indentation" class="nav-link">Whitespace and Indentation</a>
+            <a href="#Comments" class="nav-link">Comments</a>
+            <a href="#Loops" class="nav-link">Loops</a>
+            <a href="#Input_and_Output" class="nav-link">Input and Output</a>
+        </nav>
+        <main id='main-doc'>
+            <section class='main-section' id='Introduction'>
+                <header>Introduction</header>
+                <p>Brainfuck is an esoteric programming language created in 1993 by Urban Müller, and is notable for its extreme
+                minimalism.</p>
+                <p>The language consists of only eight simple commands and an instruction pointer.</p>
+                <ul>
+                    <li>increment/decrement the data pointer</li>
+                    <li>increment/decrement the byte at the data pointer</li>
+                    <li>output the byte at the data pointer</li>
+                    <li>accept one byte of input, storing its value in the byte at the data pointer.</li>
+                    <li>if the byte at the data pointer is nonzero/zero, then instead of moving the instruction pointer back/forward to the next command, jump it back/forward to the command after the
+                    matching</li>
+                </ul>
+                <p>While it is fully Turing complete, it is not intended for practical use, but to challenge and amuse programmers.
+                Brainfuck simply requires one to break commands into microscopic steps.</p>
+                <img class="displayed" src="keyboard.png" alt="keyboard">
+                <p>Learn the syntax and read more about the history of BrainFuck on <a href="https://en.wikipedia.org/wiki/Brainfuck">Wikipedia</a>.</p>
+            </section>
+            <hr>
+            <section class='main-section' id='Whitespace_and_Indentation'>
+                <header>Whitespace and Indentation</header>
+                <p><span class='keyword'>Indenting:</span> The characters [ and ] must be on the new line and be the only ones on the line. Code in </p>
+                <p>Place a line break after every [ and ].</p>
+                <pre><code class='bad-practice'>[ bad practice ]
+[>++>+++>+++>+]</code></pre>
+                <pre><code class='good-practice'>[ good practice ]
+[
+    > ++
+    > +++
+    > +++
+    > +
+]</code></pre>
+                <p><span class='keyword'>Expressions:</span> divide long and complex expressions into several short and simple ones. Expressions in the [] block should
+                be indented. The number of increments / decrements combined in a single expression must not exceed 5 characters.</p>
+                <pre><code class='bad-practice'>[ bad practice ]
+++>+++++[<+>-]++++++++[<++++++>-]<.</code></pre>
+                <pre><code class='good-practice'>[ good practice ]
+++
+> +++++
+[
+    < +
+    > -
+]
+++++ ++++
+[
+    < +++ +++
+    > -
+]
+< .</code></pre>
+            </section>
+            <hr>
+            <section class='main-section' id='Comments'>
+                <header>Comments</header>
+                <p><span class='keyword'>Comments:</span> you can use [ ] to place a comment describing the program in them, but you should not use them in the code, because the
+                current cell may not be equal to 0 and the loop will run, thus disrupting the program.</p>
+                <pre><code class='good-practice'>[
+    <span class='comment'>This loop is an "initial comment loop", a simple way of adding a comment
+    to a BF program such that you don't have to worry about any command
+    characters. Any ".", ",", "+", "-", "<" and ">" characters are simply 
+    ignored, the "[" and "]" characters just have to be balanced. This 
+    loop and the commands it contains are ignored because the current cell 
+    defaults to a value of 0; the 0 value causes this loop to be skipped.</span>
+]</code></pre>
+                <p><span class='keyword'>Description:</span> at the beginning of each program, you must specify a description of what it does, what data it accepts for input, and
+                what data it gives for output (in case it accepts or gives data).</p>
+                <pre><code class='good-practice'>[ good practice ]
+[ This program prints "Hello World!" and a newline to the screen. ]
+*program code*</code></pre>
+                <p><span class='keyword'>Inline comments:</span> we recommend adding comments on each line to explain the progress of the program, but avoid characters that can be
+                interpreted as expressions.</p>
+            </section>
+            <hr>
+            <section class='main-section' id='Loops'>
+                <header>Loops</header>
+                <p><span class='keyword'>Iterations:</span> you must specify the number of iterations of the loop (or a place in the program that accepts the number of iterations)
+                using comments</p>
+                <pre><code class='good-practice'>[ good practice ]
++++++   <span class='comment'>cell #0 = 5</span>
+[       <span class='comment'>while cell #0 > 0</span>
+    * program code *
+    -   <span class='comment'>cell #0 decrement</span>
+]</code></pre>
+            </section>
+            <hr>
+            <section class='main-section' id='Input_and_Output'>
+                <header>Input and Output</header>
+                <p><span class='keyword'>ASCII:</span> The size of the memory cell is 8 bits, so programs on BF only work with ASCII characters, you should take this into
+                account when processing data to avoid byte overflow.</p>
+                <p><span class='keyword'>Input:</span> you should add a comment about what the program accepts (numbers / strings) and the number of characters it accepts.</p>
+                <p><span class='keyword'>Output:</span> you should add a comment with an example of what the program should output if its output is based on some input data.
+                This will help you quickly find out if there is an error in the program.</p>
+            </section>
+        </main>
+        </div>
+        <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+    </body>
+</html>
