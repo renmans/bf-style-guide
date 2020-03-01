@@ -1,7 +1,3 @@
-# freeCodeCamp
-
-Web Design Projects and Coding Interview Prep
-
-## Web Design Projects
-[BF Style Guide](https://codepen.io/renmans/full/JjdJPpW)
+# BF Style Guide
+[CodePen](https://codepen.io/renmans/full/JjdJPpW)
 
